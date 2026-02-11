@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 </head>
-<body>
 
-    
+<body>
+    <script>
+        //Hello
+        /*
+        I am Jay.
+        */
+       /**
+        * func1 ทำหน้าแสดงobject
+        * @param {number} a แทนid
+        * @param {number} b แทนอายุ
+        * @return {Object} ให้ค่าidและอายุ
+        */
+        const func1 = function(a=0,b=3){
+            return ({
+                id:a,
+                age:b
+            })
+
+        }
+        const func2 = (...a) => 1+2
+        console.log(`${func1(4).id} ${func2(1,2,8,6)} ${func3(1,2,5,7)}`)
+        const y = 1;
+        let str = `Hello World`;
+        let str2 = str.slice(6);
+        let str3 = str.indexOf(`Hello`);
+        let x = str.length;
+        let str4 = str.replace('Hello','Hi');
+        let str5 = str.toUpperCase()
+        let str6 = str.toLowerCase()
+        let c = Symbol.for('id');
+        let C = Symbol.keyFor(c);
+        let str7 = ` Hello `;
+        let str8 = str7.trim();
+        let str9 = str7.trimStart();
+        let str10 = str7.trimEnd();
+        console.log(`$${x} ${str} ${str2} ${str3} ${str4} ${str5} ${str6} ${str8} ${str9} ${str10}`);
+        let a = parseInt(prompt(`input your number`));
+        console.log(`Your Number is ${a}`);
+        function func3(a,b,...c){
+            return a;
+
+        }
+    </script>
+
 </body>
 
 
