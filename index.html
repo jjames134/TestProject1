@@ -2,51 +2,73 @@
 <html>
 
 <head>
-
+   <title>Test</title>
 </head>
 
 <body>
     <script>
-        //Hello
-        /*
-        I am Jay.
-        */
-       /**
-        * func1 ทำหน้าแสดงobject
-        * @param {number} a แทนid
-        * @param {number} b แทนอายุ
-        * @return {Object} ให้ค่าidและอายุ
-        */
-        const func1 = function(a=0,b=3){
-            return ({
-                id:a,
-                age:b
-            })
+        /**
+         * เผาอิฐ โดยเลือกเตา โดยแต่ละเตามีความสามารถที่ทำให้อิฐสุกเร็วช้าต่างกัน 
+         * @param {number} n จำนวนอิฐที่มีอยู่
+         * @param {number} t เวลาที่อยู่ในเตา
+         * @return {object} คืนค่าชื่อเตาที่ใช้ จำนวนอิฐทั้งหมด อิฐที่เสร็จแล้ว และอิฐที่เหลือ
+         */
+        const kilnSystem = (n,t) => {
+            let ncomplte = 0 ;
+            let nleft ;
+            let kiln ;
+            //เช็กค่า และเลือกเตา
+            if(typeof n == "number" && typeof t == "number"){
+                if(n > 5000){
+                    kiln ="K_1"
+                    ncomplte = 100*t*3 ;
 
-        }
-        const func2 = (...a) => 1+2
-        console.log(`${func1(4).id} ${func2(1,2,8,6)} ${func3(1,2,5,7)}`)
-        const y = 1;
-        let str = `Hello World`;
-        let str2 = str.slice(6);
-        let str3 = str.indexOf(`Hello`);
-        let x = str.length;
-        let str4 = str.replace('Hello','Hi');
-        let str5 = str.toUpperCase()
-        let str6 = str.toLowerCase()
-        let c = Symbol.for('id');
-        let C = Symbol.keyFor(c);
-        let str7 = ` Hello `;
-        let str8 = str7.trim();
-        let str9 = str7.trimStart();
-        let str10 = str7.trimEnd();
-        console.log(`$${x} ${str} ${str2} ${str3} ${str4} ${str5} ${str6} ${str8} ${str9} ${str10}`);
-        let a = parseInt(prompt(`input your number`));
-        console.log(`Your Number is ${a}`);
-        function func3(a,b,...c){
-            return a;
+                }
+                else if(n > 4000){
+                    kiln ="K_2"
+                    ncomplte = 100*t*1.5 ;
 
+                }
+                else if(n > 3000){
+                    kiln ="K_3" ;
+                    ncomplte = 100*t*1 ;
+
+                }
+                else{
+                    kiln ="K_4" ;
+                    ncomplte = 100*t*0.5 ;
+
+                }
+                //ปัดเศษลงให้ได้จำนวนที่สามารถใช้ได้
+                ncomplte = Math.floor(ncomplte) ;
+                //หาอิฐเหลือ
+                if(n > ncomplte ){
+                    nleft = n-ncomplte ;
+                }
+                else{
+                    nleft = 0;
+                    ncomplte = n 
+                }
+            }
+            //แสดงค่าให้Adminดู
+            console.log(`
+            Name_Kiln : ${kiln}
+            All Brick : ${n}
+            Complte : ${ncomplte}
+            Left : ${nleft}
+            `) ;
+            return({
+                name:kiln,
+                all:n,
+                complte:ncomplte,
+                left:nleft
+            }) ;
         }
+        //รับจำนวนอิฐและเวลามาเพื่อคำนวณ
+        let n = parseInt(prompt("จำนวนอิฐ")) || 0 ;
+        let t = parseInt(prompt("เวลา")) || 0;
+        //ทำงาน ได้returnเป็นreportเอาไปใช้งานต่อไป
+        let report = kilnSystem(n,t) ;
     </script>
 
 </body>
